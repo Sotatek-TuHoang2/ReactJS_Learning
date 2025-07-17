@@ -1,11 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <!--VD1 Tạo -->
+    <!-- <h1 title="Hello" class="heading">Hello guys</h1> -->
+
+
+    <!--VD2 Tạo -->
+    <!-- <ul>
+        <li>Javascript</li>
+        <li>ReactJS</li>
+    </ul> -->
+
+    <!-- VD3 Tạo -->
+    <!-- <div class="post-item">
+        <h2  title="title 1">Content 1</h2>
+        <p>Content 2</p>
+    </div> -->
+
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script>
+        // React.createElement(tag, {object attribute}, content (children)) gồm 3 đối số gọi là type, props và children. Từ đối số thứ 3 trở đi tất cả đều la children
+
+        // Dùng React
+
+        // VD1
+        // h1React = React.createElement('h1', {
+        //     title: 'Hello',
+        //     className: 'heading'
+        // }, 'Hello guys');
+
+        // VD2
+        // lists = React.createElement('ul', null,
+        //     React.createElement('li', null, 'Javascript'),
+        //     React.createElement('li', null, 'ReactJS')
+        // )
+
+        // VD3
+        page3 = React.createElement('div',
+        {className: 'post-item'},
+        React.createElement('h2', {title: 'title 1'}, 'Content 1'),
+        React.createElement('p', null, 'Content 2'))
+
+
+    </script>
 </body>
+
 </html>
