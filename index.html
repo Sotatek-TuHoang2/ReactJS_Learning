@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <div id="root"></div>
     <!--VD1 Tạo -->
     <!-- <h1 title="Hello" class="heading">Hello guys</h1> -->
 
@@ -50,6 +51,11 @@
         React.createElement('h2', {title: 'title 1'}, 'Content 1'),
         React.createElement('p', null, 'Content 2'))
 
+        // // Get root element
+        const container = document.getElementById('root');
+        // React DOM
+        const root = ReactDOM.createRoot(container);
+        root.render(page3);
 
     </script>
 </body>
