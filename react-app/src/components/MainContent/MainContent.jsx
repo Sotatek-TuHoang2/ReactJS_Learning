@@ -16,4 +16,15 @@ MainContent.propTypes = {
   desc: PropTypes.string,
 };
 
-export default MainContent;
+export default function Section({ id, title, data }) {
+  return (
+    <section id={id}>
+      <h2>{title}</h2>
+      <ul>
+        {data.map((item, index) => (
+          <MainContent key={index} {...item} />
+        ))}
+      </ul>
+    </section>
+  )
+}

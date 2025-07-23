@@ -1,10 +1,22 @@
 import { useState } from "react";
-import MainContent from "./components/MainContent/MainContent.jsx";
 import { myData, EXAMPLES } from "./data.js";
 import TabButton from "./components/TabButton.jsx";
+import Section from "./components/MainContent/MainContent.jsx";
 
 function App() {
   const [selectedTopic, setSelectedTopic] = useState();
+  const [user, setUser] = useState({
+    fullname: "",
+    email: "",
+  })
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }))
+  }
 
   let tabContent = (<p>Vui lòng chọn một chủ đề để xem ví dụ.</p>);
   if (selectedTopic) {
@@ -27,26 +39,44 @@ function App() {
   return (
     <>
       <main>
-        <section id="core-concepts">
+        {/* <section id="core-concepts">
           <h2>Khái niệm chính trong React</h2>
           <ul>
-            <MainContent {...myData[0]} />
-            <MainContent {...myData[1]} />
-            <MainContent {...myData[2]} />
-            <MainContent {...myData[3]} />
+            {myData.map((item, index) => (
+              <MainContent key={index} {...item} />
+            ))}
           </ul>
-        </section>
+        </section> */}
+        <Section id="core-concepts" title="Khái niệm chính trong React" data={myData}>
+        </Section>
 
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton onSelect={() => { handleSelect('components') }}>Components</TabButton>
-            <TabButton onSelect={() => { handleSelect('jsx') }}>JSX</TabButton>
-            <TabButton onSelect={() => { handleSelect('props') }}>Props</TabButton>
-            <TabButton onSelect={() => { handleSelect('state') }}>State</TabButton>
+            <TabButton isSelected={selectedTopic==="components"} onClick={() => { handleSelect('components') }}>Components</TabButton>
+            <TabButton isSelected={selectedTopic==="jsx"} onClick={() => { handleSelect('jsx') }}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic==="props"} onClick={() => { handleSelect('props') }}>Props</TabButton>
+            <TabButton isSelected={selectedTopic==="state"} onClick={() => { handleSelect('state') }}>State</TabButton>
           </menu>
 
           {tabContent}
+        </section>
+
+        <section>
+          <h2>Thông tin thêm</h2>
+          <div>
+            <label htmlFor="fullname">Fullname</label>
+            <input type="text" name="fullname" onChange={handleChange} value={user.fullname} />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input type="email" name="email" onChange={handleChange} value={user.email} />
+          </div>
+          <div>
+            <h3>Thông tin người dùng</h3>
+            <p>Họ tên: {user.fullname}</p>
+            <p>Email: {user.email}</p>
+          </div>
         </section>
       </main>
     </>
